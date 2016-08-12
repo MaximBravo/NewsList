@@ -15,12 +15,8 @@
  */
 package com.example.android.newsapp;
 
-/**
- * An {@link NewsEvent} object contains information related to a single earthquake.
- */
 public class NewsEvent {
 
-    /** Magnitude of the earthquake */
     private String mTopic;
 
     private String mTitle;
@@ -42,16 +38,11 @@ public class NewsEvent {
         mUrl = url;
     }
 
-    /**
-     * Returns the topic of the earthquake.
-     */
     public String getTopic() {
         return mTopic;
     }
 
-    /**
-     * Returns the location of the earthquake.
-     */
+
     public String getTitle() {
         return mTitle;
     }
@@ -59,16 +50,11 @@ public class NewsEvent {
     public String getAuthor() { return mAuthor; }
 
     public String getDate() { return mDate; }
-    /**
-     * Returns the time of the earthquake.
-     */
+
     public String getTime() {
         return mTime;
     }
 
-    /**
-     * Returns the website URL to find more information about the earthquake.
-     */
     public String getUrl() {
         return mUrl;
     }
