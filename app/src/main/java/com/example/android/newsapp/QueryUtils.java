@@ -178,7 +178,14 @@ public final class QueryUtils {
                 // Get a single newsEvent at position i within the list of newsEvents
                 JSONObject currentNews = results.getJSONObject(i);
 
-
+                JSONArray tags = currentNews.getJSONArray("tags");
+                String author;
+                if(tags.length() >0) {
+                    JSONObject authorData = tags.getJSONObject(0);
+                    author = "By: " + authorData.getString("webTitle");
+                } else {
+                    author = "By: N/A";
+                }
                 // Extract the value for the key called "mag"
                 String topic = currentNews.getString("sectionName");
 
@@ -195,7 +202,7 @@ public final class QueryUtils {
 
                 // Create a new {@link NewsEvent} object with the topic, location, time,
                 // and url from the JSON response.
-                NewsEvent newsEvent = new NewsEvent(topic, title, date, time, url);
+                NewsEvent newsEvent = new NewsEvent(topic, title, author, date, time, url);
 
                 // Add the new {@link NewsEvent} to the list of newsEvents.
                 newsEvents.add(newsEvent);

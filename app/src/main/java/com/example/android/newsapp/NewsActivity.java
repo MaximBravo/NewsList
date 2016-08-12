@@ -45,7 +45,7 @@ public class NewsActivity extends AppCompatActivity
 //            "http://earthquake.usgs.gov/fdsnws/event/1/query";
 
     private static final String GUARDIAN_REQUEST_URL =
-            "http://content.guardianapis.com/search?q=debates&api-key=test";
+            "http://content.guardianapis.com/search?q=debates&api-key=test&show-tags=contributor";
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.

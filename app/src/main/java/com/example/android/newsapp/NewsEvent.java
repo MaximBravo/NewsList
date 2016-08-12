@@ -25,15 +25,18 @@ public class NewsEvent {
 
     private String mTitle;
 
+    private String mAuthor;
+
     private String mDate;
 
     private String mTime;
 
     private String mUrl;
 
-    public NewsEvent(String topic, String title, String date, String time, String url) {
+    public NewsEvent(String topic, String title, String a, String date, String time, String url) {
         mTopic = topic;
         mTitle = title;
+        mAuthor = a;
         mDate = date;
         mTime = time;
         mUrl = url;
@@ -52,6 +55,8 @@ public class NewsEvent {
     public String getTitle() {
         return mTitle;
     }
+
+    public String getAuthor() { return mAuthor; }
 
     public String getDate() { return mDate; }
     /**
