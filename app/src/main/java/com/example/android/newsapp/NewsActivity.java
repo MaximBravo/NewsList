@@ -24,7 +24,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,13 +59,30 @@ public class NewsActivity extends AppCompatActivity
 
     /** TextView that is displayed when the list is empty */
     private TextView mEmptyStateTextView;
-
+    private SwipeRefreshLayout mySwipeRefreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_activity);
 
-        // Find a reference to the {@link ListView} in the layout
+        updateUi();
+
+        mySwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
+        mySwipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        Log.i(LOG_TAG, "onRefresh called from SwipeRefreshLayout");
+                        updateUi();
+                        // This method performs the actual data-refresh operation.
+                        // The method calls setRefreshing(false) when it's finished.
+                        mySwipeRefreshLayout.setRefreshing(false);
+                    }
+                }
+        );
+    }
+
+    public void updateUi(){
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
 
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
@@ -164,6 +183,19 @@ public class NewsActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        if(id == R.id.menu_refresh) {
+            Log.i(LOG_TAG, "Refresh menu item selected");
+
+
+            // Signal SwipeRefreshLayout to start the progress indicator
+            mySwipeRefreshLayout.setRefreshing(true);
+            updateUi();
+            mySwipeRefreshLayout.setRefreshing(false);
+            // Start the refresh background task.
+            // This method calls setRefreshing(false) when it's finished.
+
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
