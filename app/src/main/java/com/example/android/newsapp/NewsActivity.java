@@ -75,24 +75,24 @@ public class NewsActivity extends AppCompatActivity
     }
 
     public void updateUi(){
-        ListView earthquakeListView = (ListView) findViewById(R.id.list);
+        ListView newsListView = (ListView) findViewById(R.id.list);
 
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
-        earthquakeListView.setEmptyView(mEmptyStateTextView);
+        newsListView.setEmptyView(mEmptyStateTextView);
 
 
         mAdapter = new NewsAdapter(this, new ArrayList<NewsEvent>());
 
-        earthquakeListView.setAdapter(mAdapter);
+        newsListView.setAdapter(mAdapter);
 
-        earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 NewsEvent currentNewsEvent = mAdapter.getItem(position);
 
-                Uri earthquakeUri = Uri.parse(currentNewsEvent.getUrl());
+                Uri currentNewsEventUri  = Uri.parse(currentNewsEvent.getUrl());
 
-                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, currentNewsEventUri );
 
                 startActivity(websiteIntent);
             }

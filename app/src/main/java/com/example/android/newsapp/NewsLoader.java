@@ -42,7 +42,7 @@ public class NewsLoader extends AsyncTaskLoader<List<NewsEvent>> {
             return null;
         }
 
-        List<NewsEvent> newsEvents = QueryUtils.fetchEarthquakeData(mUrl);
+        List<NewsEvent> newsEvents = QueryUtils.fetchNewsEventData(mUrl);
         return newsEvents;
     }
 }

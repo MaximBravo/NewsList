@@ -44,7 +44,7 @@
             android:paddingLeft="10dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:textColor="@color/textColorEarthquakeLocation"
+            android:textColor="@color/textColorNewsLocation"
             android:textSize="16sp"
             tools:text="Long placeholder location that should wrap to more than 2 lines of text" />
 
@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:textColor="@color/textColorEarthquakeDetails"
+            android:textColor="@color/textColorNewsDetails"
             android:textSize="12sp"
             tools:text="Mar 6, 2010" />
 
@@ -80,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:textColor="@color/textColorEarthquakeDetails"
+            android:textColor="@color/textColorNewsDetails"
             android:textSize="12sp"
             tools:text="3:00 PM" />
 
